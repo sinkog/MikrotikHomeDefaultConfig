@@ -1,5 +1,4 @@
 # may/23/2015 22:21:52 by RouterOS 6.28
-# software id = J4QI-MVIV
 #
 /interface bridge
 add admin-mac=4C:5E:0C:A7:17:AA auto-mac=no mtu=1500 name=bridge-local
