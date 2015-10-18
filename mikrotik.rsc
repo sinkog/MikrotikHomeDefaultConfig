@@ -7,7 +7,7 @@ set [ find default-name=wlan1 ] band=2ghz-b/g/n channel-width=\
     20/40mhz-ht-above disabled=no distance=indoors l2mtu=2290 mode=ap-bridge \
     ssid=Mikrotik_Home wireless-protocol=802.11
 /interface ethernet
-set [ find default-name=ether1 ] name=wan
+set [ find default-name=ether1 ] name=ether1-gateway
 set [ find default-name=ether2 ] name=ether2-master-local
 set [ find default-name=ether3 ] master-port=ether2-master-local name=\
     ether3-slave-local
@@ -15,6 +15,10 @@ set [ find default-name=ether4 ] master-port=ether2-master-local name=\
     ether4-slave-local
 set [ find default-name=ether5 ] master-port=ether2-master-local name=\
     ether5-slave-local
+/interface pppoe-client
+add name=wan add-default-route=yes disabled=no interface=ether1-gateway use-peer-dns=yes\
+    user=XXXXXX \
+    password=XXXXXX
 /interface wireless security-profiles
 set [ find default=yes ] authentication-types=wpa-psk,wpa2-psk mode=\
     dynamic-keys wpa-pre-shared-key=XX45t87ujhtz wpa2-pre-shared-key=\
